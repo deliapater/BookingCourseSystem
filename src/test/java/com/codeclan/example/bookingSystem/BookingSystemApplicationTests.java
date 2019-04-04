@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 
 @RunWith(SpringRunner.class)
@@ -32,21 +35,20 @@ public class BookingSystemApplicationTests {
 	}
 
 	@Test
-	public void createACourse(){
+	public void createABookingThatHasACourseAndACustomer(){
 		Course course = new Course("Java", "Glasgow", 5);
 		courseRepository.save(course);
-	}
-
-	@Test
-	public void createACustomer(){
 		Customer customer1 = new Customer("Delia", "Glasgow", 25);
 		customerRepository.save(customer1);
+		Booking booking1 = new Booking("24-05-2019", course, customer1);
+		bookingRepository.save(booking1);
 	}
 
 	@Test
-	public void createBooking(){
-		Booking booking1 = new Booking("24-05-2019");
-		bookingRepository.save(booking1);
+	public void findCourseByStarRating(){
+		List<Course> found = courseRepository.findCourseByStarRating(5);
+		assertEquals(5, found.get(0).getStarRating());
 	}
+
 
 }
