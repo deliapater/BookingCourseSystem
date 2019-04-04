@@ -1,7 +1,7 @@
 package com.codeclan.example.bookingSystem.controllers;
 
 import com.codeclan.example.bookingSystem.models.Course;
-import com.codeclan.example.bookingSystem.repositories.CourseRepository;
+import com.codeclan.example.bookingSystem.repositories.CourseRepository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,17 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(name= "/courses")
+@RequestMapping(value = "/courses")
 public class CourseController {
 
     @Autowired
     CourseRepository courseRepository;
 
-    @GetMapping
-    public List<Course> getAllCourses() { return courseRepository.findAll();}
 
-    @GetMapping(value = "/rating/{starRating}")
-    public List<Course> findCourseByStarRating (@PathVariable int starRating){
-        return courseRepository.findCourseByStarRating(starRating);
+//    @GetMapping(value = "/rating/{starRating}")
+//    public List<Course> findCoursesByStarRating (@PathVariable int starRating){
+//        return courseRepository.findCoursesByStarRating(starRating);
+//    }
+
+
+    @GetMapping(value = "/starRating/{starRating}")
+    public List<Course> findCoursesByStarRating(@PathVariable int starRating){
+        return courseRepository.findCoursesByStarRating(starRating);
     }
+
 }
