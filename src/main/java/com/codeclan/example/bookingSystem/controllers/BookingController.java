@@ -24,6 +24,11 @@ public class BookingController  {
 
     }
 
+    @GetMapping(value= "/courses/{id}")
+    public List<Booking> findAllCoursesFromCustomer (@PathVariable Long id) {
+        return bookingRepository.findAllCoursesFromCustomer(id);
+
+    }
+
 
 }
-c

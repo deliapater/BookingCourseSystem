@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface BookingRepositoryCustom {
     List<Booking> findAllCustomersFromCourse (Long id);
+
+    List<Booking> findAllCoursesFromCustomer (Long id);
 }
