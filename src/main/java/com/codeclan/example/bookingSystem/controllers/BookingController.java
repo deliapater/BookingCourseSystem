@@ -30,5 +30,10 @@ public class BookingController  {
 
     }
 
+    @GetMapping(value= "/date/{date}")
+    public List<Booking> findAllBookingsFromDate (@PathVariable String date) {
+        return bookingRepository.findAllBookingsFromDate(date);
+
+    }
 
 }

@@ -46,4 +46,18 @@ public class BookingRepositoryImpl implements BookingRepositoryCustom{
         }
         return result;
     }
+
+    @Transactional
+    public List<Booking> findAllBookingsFromDate(String date){
+        List<Booking> result = null;
+        Session session = entityManager.unwrap(Session.class);
+        try {
+            Criteria cr = session.createCriteria(Booking.class);
+            cr.add(Restrictions.eq("date", date));
+            result = cr.list();
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        return result;
+    }
 }

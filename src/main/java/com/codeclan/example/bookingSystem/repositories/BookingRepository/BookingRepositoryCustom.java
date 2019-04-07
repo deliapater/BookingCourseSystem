@@ -9,4 +9,6 @@ public interface BookingRepositoryCustom {
     List<Booking> findAllCustomersFromCourse (Long id);
 
     List<Booking> findAllCoursesFromCustomer (Long id);
+
+    List<Booking> findAllBookingsFromDate(String date);
 }
